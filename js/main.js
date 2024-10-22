@@ -98,6 +98,38 @@ $(function(){
             top:"75%"
         })
     }
+    // 로고 위치 상단
+    function logo_beacon_t(){
+        $("#main .logo").stop().animate({
+            left: "65%",
+            top: "50%",
+            width: "500px",
+            height: "435px"
+        })
+        $("#main .logo img").stop().animate({
+            width:"100%"
+        })
+        $("#menubar").stop().stop().css({
+            left:0,
+            opacity:0
+        })
+    }
+    // 로고 위치 하단
+    function logo_beacon_b(){
+        $("#main .logo").stop().animate({
+            left: "8%",
+            top: "8%",
+            width: "200px",
+            height: "88px"
+        })
+        $("#main .logo img").stop().animate({
+            width:"50%"
+        })
+        $("#menubar").stop().stop().delay(500).animate({
+            left:"20%",
+            opacity:1
+        },1000)
+    }
     // alert(mobile)
     $(window).resize(function(){
         web=$(window).height()
@@ -126,12 +158,7 @@ $(function(){
             logo_c = setInterval(logo_move,2000)
             m_reset()
         }else{
-            $("#main .logo").stop().animate({
-                left: "65%",
-                top: "50%",
-                width: "500px",
-                height: "435px"
-            })
+            logo_beacon_t()
             $("#main .logo").addClass("shadow")
             clearInterval(logo_c)
             logo_c = setInterval(logo_move,2000)
@@ -258,12 +285,10 @@ $(function(){
                 scrollTop:0
             })
             if(mobile==false){
-                $("#main .logo").stop().animate({
-                    left: "65%",
-                    top: "50%",
-                    width: "500px",
-                    height: "435px"
-                })
+                logo_beacon_t()
+                $("#main .logo").addClass("shadow")
+                clearInterval(logo_c)
+                logo_c = setInterval(logo_move,2000)
             }else{
                 $("#main .logo").stop().animate({
                     left: "50%",
@@ -322,7 +347,7 @@ $(function(){
                     left: main_left+245
                 },100).animate({
                     scale:1,
-                    top: main_top+117.5,
+                    top: main_top+217.5,
                     left: main_left+250
                 },350).fadeOut(500)
             }else{
@@ -529,12 +554,7 @@ $(function(){
                     clearInterval(logo_c)
                     logo_c = setInterval(logo_move,2000)
                 }else{
-                    $("#main .logo").stop().animate({
-                        left: "15%",
-                        top: "8%",
-                        width: "100px",
-                        height: "88px"
-                    })
+                    logo_beacon_b()
                     $("#main .logo").removeClass("shadow")
                     clearInterval(logo_c)
                 }
@@ -591,17 +611,24 @@ $(function(){
             $(this).children(".box").css({
                 width:"100%"
             })
-            $(this).stop().animate({
+            $(this).stop().delay(500).animate({
                 scale:1.1,
                 bottom:"200px",
                 height:"500px",
+            },function(){
+                $("#cursor").css({
+                    display:"none"
+                })
             }).fadeIn().siblings().stop().fadeOut()
-            $(this).children(".box").children(".text").stop().delay(250).fadeIn()
+            $(this).children(".box").children(".text").stop().delay(750).fadeIn()
         }
     },function(){
         if(step==1){
             $("#about_me .main>div").stop()
             $("#about_me .main>div .text").stop()
+            $("#cursor").css({
+                display:"block"
+            })
             $("#about_me .main>div").css({
                 zIndex:0
             })
@@ -652,28 +679,28 @@ $(function(){
     })
 
     $("#about_me .main .skill").hover(function(){
-        $("#about_me .main .ps .bar").stop().delay(500).animate({
+        $("#about_me .main .ps .bar").stop().delay(1000).animate({
             width:"85%"
         },850)
-        $("#about_me .main .ai .bar").stop().delay(500).animate({
+        $("#about_me .main .ai .bar").stop().delay(1000).animate({
             width:"90%"
         },900)
-        $("#about_me .main .id .bar").stop().delay(500).animate({
+        $("#about_me .main .id .bar").stop().delay(1000).animate({
             width:"50%"
         },500)
-        $("#about_me .main .ae .bar").stop().delay(500).animate({
+        $("#about_me .main .ae .bar").stop().delay(1000).animate({
             width:"45%"
         },450)
-        $("#about_me .main .hc .bar").stop().delay(500).animate({
+        $("#about_me .main .hc .bar").stop().delay(1000).animate({
             width:"100%"
         },1000)
-        $("#about_me .main .js .bar").stop().delay(500).animate({
+        $("#about_me .main .js .bar").stop().delay(1000).animate({
             width:"80%"
         },800)
-        $("#about_me .main .vr .bar").stop().delay(500).animate({
+        $("#about_me .main .vr .bar").stop().delay(1000).animate({
             width:"50%"
         },500)
-        $("#about_me .main .fg .bar").stop().delay(500).animate({
+        $("#about_me .main .fg .bar").stop().delay(1000).animate({
             width:"80%"
         },800)
     },function(){
@@ -790,77 +817,89 @@ $(function(){
             })
         }
     })
-
+    dragOnCheck=false
     $("#publisher .check").mouseleave(function(){
         if(drag==false){
             t_box.addClass("recycle")
+            $("#publisher .check .img_show").css({
+                display:"none"
+            })
             var pi_num = (t_box.index()+1)
             if($("#publisher .img .ib"+pi_num+"").hasClass("recycle")){
+                $("#publisher .img .ib"+pi_num+" .box").css({
+                    pointerEvents: "none"
+                })
                 $("#publisher .big_f .main .pf"+pi_num+"").addClass("on")
             }
             f_num++
+            dragOnCheck=true
             if(f_num>0){
                 $("#publisher .folder_number p").html(f_num+"<br>check!")
             }
-            if(i_box.hasClass("p1")){
-                window.open("./publisher/1/DISTANT_HORIZONE.html")
-            }
-            if(i_box.hasClass("p2")){
-                window.open("./publisher/2/Assemble.html")
-            }
-            if(i_box.hasClass("p3")){
-                window.open("./publisher/3/index_faker.html")
-            }
-            if(i_box.hasClass("p4")){
-                window.open("./publisher/4/asiana.html")
-            }
-            if(i_box.hasClass("p5")){
-                window.open("./publisher/5/index.html")
-            }
-            if(i_box.hasClass("p6")){
-                window.open("./publisher/6/index_pokemon.html")
-            }
-            if(i_box.hasClass("p7")){
-                window.open("./publisher/7/index.html")
-            }
-            if(i_box.hasClass("p8")){
-                window.open("./publisher/8/index_cosmetics.html")
-            }
-            if(i_box.hasClass("p9")){
-                window.open("./publisher/9/nike.html")
-            }
-            if(i_box.hasClass("p10")){
-                window.open("./publisher/10/index.html")
-            }
-            if(i_box.hasClass("p11")){
-                window.open("./publisher/11/RADEON.html")
-            }
-            if(i_box.hasClass("p12")){
-                window.open("./publisher/12/index.html")
-            }
-            if(i_box.hasClass("p13")){
-                window.open("./publisher/13/한국닌텐도.html")
-            }
-            if(i_box.hasClass("p14")){
-                window.open("./publisher/14/index.html")
-            }
-            if(i_box.hasClass("p15")){
-                window.open("./publisher/15/index.html")
-            }
-            if(i_box.hasClass("p16")){
-                window.open("./publisher/16/pulmuone.html")
-            }
-            if(i_box.hasClass("p17")){
-                window.open("./publisher/17/index.html")
-            }
-            if(i_box.hasClass("p18")){
-                window.open("./publisher/18/index.html")
-            }
-            if(i_box.hasClass("p19")){
-                window.open("./publisher/19/hollys.html")
-            }
-            if(i_box.hasClass("p20")){
-                window.open("./publisher/20/cafemememi.html")
+            if(dragOnCheck=true){
+                setTimeout(function(){
+                    if(i_box.hasClass("p1")){
+                        window.open("./publisher/1/DISTANT_HORIZONE.html")
+                    }
+                    if(i_box.hasClass("p2")){
+                        window.open("./publisher/2/Assemble.html")
+                    }
+                    if(i_box.hasClass("p3")){
+                        window.open("./publisher/3/index_faker.html")
+                    }
+                    if(i_box.hasClass("p4")){
+                        window.open("./publisher/4/asiana.html")
+                    }
+                    if(i_box.hasClass("p5")){
+                        window.open("./publisher/5/index.html")
+                    }
+                    if(i_box.hasClass("p6")){
+                        window.open("./publisher/6/index_pokemon.html")
+                    }
+                    if(i_box.hasClass("p7")){
+                        window.open("./publisher/7/index.html")
+                    }
+                    if(i_box.hasClass("p8")){
+                        window.open("./publisher/8/index_cosmetics.html")
+                    }
+                    if(i_box.hasClass("p9")){
+                        window.open("./publisher/9/nike.html")
+                    }
+                    if(i_box.hasClass("p10")){
+                        window.open("./publisher/10/index.html")
+                    }
+                    if(i_box.hasClass("p11")){
+                        window.open("./publisher/11/RADEON.html")
+                    }
+                    if(i_box.hasClass("p12")){
+                        window.open("./publisher/12/index.html")
+                    }
+                    if(i_box.hasClass("p13")){
+                        window.open("./publisher/13/한국닌텐도.html")
+                    }
+                    if(i_box.hasClass("p14")){
+                        window.open("./publisher/14/index.html")
+                    }
+                    if(i_box.hasClass("p15")){
+                        window.open("./publisher/15/index.html")
+                    }
+                    if(i_box.hasClass("p16")){
+                        window.open("./publisher/16/pulmuone.html")
+                    }
+                    if(i_box.hasClass("p17")){
+                        window.open("./publisher/17/index.html")
+                    }
+                    if(i_box.hasClass("p18")){
+                        window.open("./publisher/18/index.html")
+                    }
+                    if(i_box.hasClass("p19")){
+                        window.open("./publisher/19/hollys.html")
+                    }
+                    if(i_box.hasClass("p20")){
+                        window.open("./publisher/20/cafemememi.html")
+                    }
+                    dragOnCheck=false
+                },250);
             }
         }
     })
@@ -880,9 +919,14 @@ $(function(){
             }
             if($("#publisher .img .ib"+pi_num+"").hasClass("recycle")){
                 $("#publisher .big_f .main .pf"+pi_num+"").addClass("on")
+                $("#publisher .img .ib"+pi_num+" .box").css({
+                    pointerEvents: "none"
+                })
             }
         }
     })
+
+    //커서 호버 모음
     var hover = false
     $("#publisher .f_open").hover(function(){
         hover = true
@@ -896,6 +940,17 @@ $(function(){
             display:"block"
         })
         $("#publisher .folder img").attr("src","image/box/folder.svg")
+    })
+    $("#top, #publisher .main .vue, #publisher .main .react, #design .figma a img, #design .main .card .img, #design .main .info .text button").hover(function(){
+        hover = true
+        $("#cursor").css({
+            display:"none"
+        })
+    },function(){
+        hover = false
+        $("#cursor").css({
+            display:"block"
+        })
     })
 
     // 모바일 클릭
@@ -1050,7 +1105,11 @@ $(function(){
             },2000,"easeOutCubic")
             $("#publisher .img .p"+big_num+"").animate({
                 top:Math.round(Math.random()*70)+"%"
-            },2000,"easeOutBounce")
+            },2000,"easeOutBounce",function(){
+                $(this).css({
+                    pointerEvents: "all"
+                })
+            })
         }
     })
 
@@ -1139,12 +1198,7 @@ $(function(){
                 if(mobile==false){
                     if(start==false){
                         start=true
-                        $("#main .logo").stop().animate({
-                            left: "65%",
-                            top: "50%",
-                            width: "500px",
-                            height: "435px"
-                        })
+                        logo_beacon_t()
                         $("#main .logo").addClass("shadow")
                         clearInterval(logo_c)
                         logo_c = setInterval(logo_move,2000)
@@ -1167,19 +1221,9 @@ $(function(){
                 }
             }else{
                 if(mobile==false){
-                    $("#main .logo").stop().animate({
-                        left: "5%",
-                        top: "8%",
-                        width: "100px",
-                        height: "88px"
-                    })
+                    logo_beacon_b()
                 }else{
-                    $("#main .logo").stop().animate({
-                        left: "15%",
-                        top: "8%",
-                        width: "100px",
-                        height: "88px"
-                    })
+                    logo_beacon_b()
                 }
                 $("#main .logo").removeClass("shadow")
                 clearInterval(logo_c)
@@ -1497,7 +1541,11 @@ $(function(){
                     },2000,"easeOutCubic")
                     $("#publisher .img .p"+i+"").animate({
                         top:Math.round(Math.random()*70)+"%"
-                    },2000,"easeOutBounce")
+                    },2000,"easeOutBounce",function(){
+                        $(this).css({
+                            pointerEvents: "all"
+                        })
+                    })
                 }
             }else{
                 $("#publisher .title").stop().animate({
@@ -1931,12 +1979,7 @@ $(function(){
                 }
                 $("#top").stop().fadeOut()
             }else{
-                $("#main .logo").stop().animate({
-                    left: "15%",
-                    top: "8%",
-                    width: "100px",
-                    height: "88px"
-                })
+                logo_beacon_b()
                 $("#main .logo").removeClass("shadow")
                 clearInterval(logo_c)
             }
