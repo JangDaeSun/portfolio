@@ -62,6 +62,14 @@
     border-radius: 120px;
     box-shadow: 0 0 5px black,1px -1px 2px rgba(255, 255, 255, .5);
 }
+#publisher .check .text{
+    position: absolute;
+    width: 100%;
+    font-size: 24px;
+    bottom: -30px;
+    text-align: center;
+    color: white;
+}
 
 #publisher .folder{
     position: absolute;
@@ -148,7 +156,7 @@
 }
 #publisher .img .img_box .box{
     position: absolute;
-    pointer-events: all;
+    pointer-events: none;
     width: 300px;
     height: 150px;
     color: white;
@@ -197,6 +205,8 @@
 
 #publisher .vue{
     position: absolute;
+    cursor: pointer;
+    z-index: 0;
     width: 100px;
     height: 100px;
     right: 10%;
@@ -204,6 +214,8 @@
 }
 #publisher .react{
     position: absolute;
+    cursor: pointer;
+    z-index: 0;
     width: 100px;
     height: 100px;
     right: 17%;
@@ -211,4 +223,7 @@
 }
 #publisher .vue img,#publisher .react img{
     width: 100%;
+}
+#publisher .vue a,#publisher .react a{
+    cursor: pointer;
 }

@@ -153,6 +153,7 @@
 }
 #design .main .card .img{
     position: absolute;
+    cursor: pointer;
     transform-origin: left;
     left: 0%;
     top: 20%;
@@ -184,6 +185,7 @@
 }
 #design .main .info .text button{
     position: absolute;
+    cursor: pointer;
     width: 30%;
     height: 10%;
     bottom: 0%;
@@ -261,7 +263,8 @@
     right: 8%;
     height: 100px;
 }
-#design .figma img{
+#design .figma a img{
     width: auto;
     height: 100%;
+    cursor: pointer;
 }

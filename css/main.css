@@ -83,6 +83,11 @@
 #main .logo .cY{
     mix-blend-mode: multiply;
 }
+#main #menubar{
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+}
 #main .line,#main .text{
     position: absolute;
     top: 0;
