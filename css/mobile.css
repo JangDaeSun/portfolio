@@ -1,5 +1,5 @@
 @charset "utf-8";
-@media screen and (max-width:500px){
+@media screen and (max-width:500px) and (min-width:320px){
     *{
         -webkit-user-drag: auto;
         touch-action: auto;
@@ -54,6 +54,9 @@
     }
     #main .n_text h4{
         font-size: 48px;
+    }
+    #main #menubar{
+        display: none;
     }
     #about_me .main>div{
         font-size: 64px;
@@ -169,6 +172,8 @@
         height: 75px;
         left:0;
         top:-40%;
+        pointer-events: all;
+        cursor: pointer;
     }
     #publisher .img img{
         width: 100%;
@@ -202,6 +207,7 @@
     #contact #card{
         width: 405px;
         height: 225px;
+        opacity: 0;
     }
     #contact #card_back{
         width: 405px;
