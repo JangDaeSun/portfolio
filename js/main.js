@@ -3,6 +3,10 @@ $(function(){
     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)==true || $(window).width()<=500){
         mobile = true
     }
+    var trueMobile = false
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)==true){
+        trueMobile = true
+    }
     function m_reset() {
         setTimeout(enableScroll, 500);
         $("#publisher .check,#publisher .f_open,#publisher .folder,#publisher .folder_number").css({
@@ -109,15 +113,48 @@ $(function(){
         $("#main .logo img").stop().animate({
             width:"100%"
         })
-        $("#menubar").stop().stop().css({
-            left:0,
-            opacity:0
-        })
+        if(mobile==false){
+            $("#menubar").stop().stop().css({
+                left:0,
+                opacity:0
+            })
+        }
     }
     // 로고 위치 하단
     function logo_beacon_b(){
+        if(mobile==false){
+            $("#main .logo").stop().animate({
+                left: "8%",
+                top: "8%",
+                width: "200px",
+                height: "88px"
+            })
+            $("#main .logo img").stop().animate({
+                width:"50%"
+            })
+            $("#menubar").css({
+                width:"100%"
+            })
+            $("#menubar").stop().stop().delay(500).animate({
+                left:"20%",
+                opacity:1
+            },1000)
+        }
+    }
+    function logo_mobile_t(){
         $("#main .logo").stop().animate({
-            left: "8%",
+            left: "50%",
+            top: "42%",
+            width: "250px",
+            height: "220px"
+        })
+        $("#main .logo img").stop().animate({
+            width:"100%"
+        })
+    }
+    function logo_mobile_b(){
+        $("#main .logo").stop().animate({
+            left: "24%",
             top: "8%",
             width: "200px",
             height: "88px"
@@ -125,10 +162,6 @@ $(function(){
         $("#main .logo img").stop().animate({
             width:"50%"
         })
-        $("#menubar").stop().stop().delay(500).animate({
-            left:"20%",
-            opacity:1
-        },1000)
     }
     // alert(mobile)
     $(window).resize(function(){
@@ -137,22 +170,22 @@ $(function(){
         step = 0
         $("body").trigger("mousewheel")
         $("html,body").stop().animate({
-            scrollTop:step*web
+            scrollTop:0
         },function(){
             wheel=false
         })
+        // $("html,body").stop().animate({
+        //     scrollTop:step*web
+        // },function(){
+        //     wheel=false
+        // })
         if(screen<=500){
             mobile = true
         }else{
             mobile = false
         }
         if(mobile==true){
-            $("#main .logo").stop().animate({
-                left: "50%",
-                top: "42%",
-                width: "250px",
-                height: "220px"
-            })
+            logo_mobile_t()
             $("#main .logo").addClass("shadow")
             clearInterval(logo_c)
             logo_c = setInterval(logo_move,2000)
@@ -290,12 +323,7 @@ $(function(){
                 clearInterval(logo_c)
                 logo_c = setInterval(logo_move,2000)
             }else{
-                $("#main .logo").stop().animate({
-                    left: "50%",
-                    top: "42%",
-                    width: "250px",
-                    height: "220px"
-                })
+                logo_mobile_t()
             }
             $("#main .logo").addClass("shadow")
             step=0
@@ -305,9 +333,11 @@ $(function(){
             intro=false
             start=false
             end=false
-            $("#cursor").css({
-                display:"block"
-            })
+            if(trueMobile==false){
+                $("#cursor").css({
+                    display:"block"
+                })
+            }
             // $("#cursor .c1").css({
             //     top:posY,
             //     left:posX
@@ -544,17 +574,12 @@ $(function(){
             step = $(this).index()
             if(mobile==true){
                 if(step==0){
-                    $("#main .logo").stop().animate({
-                        left: "50%",
-                        top: "42%",
-                        width: "250px",
-                        height: "220px"
-                    })
+                    logo_mobile_t()
                     $("#main .logo").addClass("shadow")
                     clearInterval(logo_c)
                     logo_c = setInterval(logo_move,2000)
                 }else{
-                    logo_beacon_b()
+                    logo_mobile_b()
                     $("#main .logo").removeClass("shadow")
                     clearInterval(logo_c)
                 }
@@ -626,9 +651,11 @@ $(function(){
         if(step==1){
             $("#about_me .main>div").stop()
             $("#about_me .main>div .text").stop()
-            $("#cursor").css({
-                display:"block"
-            })
+            if(trueMobile==false){
+                $("#cursor").css({
+                    display:"block"
+                })
+            }
             $("#about_me .main>div").css({
                 zIndex:0
             })
@@ -952,6 +979,19 @@ $(function(){
             display:"block"
         })
     })
+    if(trueMobile==false && mobile==true){
+        $("#publisher .img .box").hover(function(){
+            hover = true
+            $("#cursor").css({
+                display:"none"
+            })
+        },function(){
+            hover = false
+            $("#cursor").css({
+                display:"block"
+            })
+        })
+    }
 
     // 모바일 클릭
     $("#publisher .img .box").click(function(){
@@ -1207,12 +1247,7 @@ $(function(){
                 }else{
                     if(start==false){
                         start=true
-                        $("#main .logo").stop().animate({
-                            left: "50%",
-                            top: "42%",
-                            width: "250px",
-                            height: "220px"
-                        })
+                        logo_mobile_t()
                         $("#main .logo").addClass("shadow")
                         clearInterval(logo_c)
                         logo_c = setInterval(logo_move,2000)
@@ -1659,7 +1694,7 @@ $(function(){
         }
 
         if(mobile==true&&m_open==false){
-            console.log(step)
+            // console.log(step)
             if($(window).scrollTop()<web-600){
                 if(step!=0){
                     step=0
@@ -1690,6 +1725,7 @@ $(function(){
                                 left: about_left+about/2+about/4
                             },1000,"easeInOutSine").fadeOut(500)
                         }
+                        logo_mobile_b()
                         $("#about_me .title").stop().animate({
                             left:"5%"
                         },500)
@@ -1926,6 +1962,7 @@ $(function(){
                                 top:"0"
                             })
                             $("#contact #card").css({
+                                opacity:1,
                                 top: "-75%",
                                 scale: .1,
                                 rotate: "0deg",
@@ -1967,12 +2004,7 @@ $(function(){
             if(step==0&&intro==false){    //타이틀
                 if(start==false){
                     start=true
-                    $("#main .logo").stop().animate({
-                        left: "50%",
-                        top: "42%",
-                        width: "250px",
-                        height: "220px"
-                    })
+                    logo_mobile_t()
                     $("#main .logo").addClass("shadow")
                     clearInterval(logo_c)
                     logo_c = setInterval(logo_move,2000)
@@ -2025,7 +2057,7 @@ $(function(){
             top:15-(posY/10)
         })
 
-        if(intro==false && drag==false && hover==false){
+        if(intro==false && drag==false && hover==false && trueMobile==false){
             $("#cursor").css({
                 display:"block"
             })
