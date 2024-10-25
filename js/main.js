@@ -217,7 +217,7 @@ $(function(){
 
     var step=0
     var web=$(window).height()
-    console.log(web)
+    // console.log(web)
     var screen=$(window).width()
     var intro=true
 
@@ -1160,10 +1160,7 @@ $(function(){
     },function(){
         wheel=false
     })
-
-    $("body").on("mousewheel", function(event,delta){
-        
-
+    function mobileScroll(){
         if(mobile==false){
             var w_top = $("#cursor .c1").offset().top
             if(delta>0 && mobile==false){ //마우스힐을 올렸을때
@@ -2037,7 +2034,15 @@ $(function(){
                 display:"none"
             })
         }
+    }
+    $(window).on("touchmove",function(e,delta){
+        mobileScroll()
     })
+    
+    $("body").on("mousewheel", function(event,delta){
+        mobileScroll()
+    })
+    
 
     // 커서 + 타이틀 텍스트
     $(window).on("mousemove",function(e){
