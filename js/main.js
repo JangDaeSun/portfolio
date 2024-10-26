@@ -1161,6 +1161,336 @@ $(function(){
         wheel=false
     })
     function mobileScroll(){
+        if(mobile==true&&m_open==false){
+            // console.log(step)
+            if($(window).scrollTop()<web-600){
+                if(step!=0){
+                    step=0
+                }
+            }else if($(window).scrollTop()<2*web-200){
+                if(step!=1){
+                    step=1
+                    if(step==1&&intro==false){    //소개
+                        start=false
+                        end=false
+                        if(guide_1==false){
+                            guide_1=true
+                            $("#guide img").attr("src", "image/box/hand2.svg")
+                            for(i=1;i<=10;i++){
+                                $("#guide img").stop()
+                                if(i==10){
+                                    $("#guide img").css({
+                                        scale:1
+                                    })
+                                }
+                            }
+                            var about_top=$("#about_me .main").offset().top
+                            var about_left=$("#about_me .main").offset().left
+                            var about=$("#about_me .main").width()
+                            $("#guide img").show(150).delay(1500).animate({
+                                scale:1,
+                                top: about_top+web-265,
+                                left: about_left+about/2+about/4
+                            },1000,"easeInOutSine").fadeOut(500)
+                        }
+                        logo_mobile_b()
+                        $("#about_me .title").stop().animate({
+                            left:"5%"
+                        },500)
+                        $("#about_me .title span").stop()
+                        $("#about_me .title span").eq(6).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },1050)
+                        $("#about_me .title span").eq(5).delay(250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },1000)
+                        $("#about_me .title span").eq(4).delay(500).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },950)
+                        $("#about_me .title span").eq(3).delay(750).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },900)
+                        $("#about_me .title span").eq(2).delay(1000).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },850)
+                        $("#about_me .title span").eq(1).delay(1250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },800)
+                        $("#about_me .title span").eq(0).delay(1500).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },750)
+                        $("#about_me .main .history").stop().stop().animate({
+                            bottom:"200px",
+                            scale: 1
+                        },500)
+                        $("#about_me .main .license").stop().stop().animate({
+                            bottom:"350px",
+                            scale: 1
+                        },1000)
+                        $("#about_me .main .skill").stop().stop().animate({
+                            bottom:"460px",
+                            scale: 1
+                        },1500)
+                        $("#about_me .photo img").stop().animate({
+                            left:"-45%"
+                        },750)
+                    }
+                }
+            }else if($(window).scrollTop()<3*web-200){
+                if(step!=2){
+                    step=2
+                    if(step==2&&intro==false){    //디자인
+                        start=false
+                        end=false
+                        if(guide_2==false){
+                            guide_2=true
+                            $("#guide img").attr("src", "image/box/hand2.svg")
+                            for(i=1;i<=10;i++){
+                                $("#guide img").stop()
+                                if(i==10){
+                                    $("#guide img").css({
+                                        scale:1
+                                    })
+                                }
+                            }
+                            var design_top=$("#design").offset().top+web/2
+                            var design=$("#design .main").width()
+                            var design_left=$("#design .main").offset().left+design*0.4
+                            $("#guide img").fadeOut(500).show(50).show(50).show(50).delay(1500).animate({
+                                scale:1,
+                                top: design_top,
+                                left: design_left
+                            },1000,"easeInOutSine").animate({
+                                scale:1
+                            },200).animate({
+                                scale:.1,
+                                top: design_top-5,
+                                left: design_left-5
+                            },100).animate({
+                                scale:1,
+                                top: design_top,
+                                left: design_left
+                            },350).animate({
+                                scale:.1,
+                                top: design_top-5,
+                                left: design_left-5
+                            },100).animate({
+                                scale:1,
+                                top: design_top,
+                                left: design_left
+                            },350).fadeOut(500)
+                        }
+                        $("#design .title").stop().animate({
+                            left:"5%"
+                        },500)
+                        $("#design .title span").stop()
+                        $("#design .title span").eq(5).delay(250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },1000)
+                        $("#design .title span").eq(4).delay(500).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },950)
+                        $("#design .title span").eq(3).delay(750).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },900)
+                        $("#design .title span").eq(2).delay(1000).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },850)
+                        $("#design .title span").eq(1).delay(1250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },800)
+                        $("#design .title span").eq(0).delay(1500).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },750)
+                        $("#design .main .card").stop().animate({
+                            left:0,
+                            scale:1
+                        },1250)
+                        $("#design .main .card .info").stop().animate({
+                            right:"-55%"
+                        },1500)
+                        $("#design .main .card .info text").stop()
+                        $("#design .main .card .info .stroke").stop().delay(1000).animate({
+                            strokeDashoffset: 0
+                        },3000)
+                        $("#design .main .card .info .fill").stop().delay(1500).animate({
+                            opacity: 1
+                        },2500)
+                        $("#design .main .card .info .text").stop().delay(1500).slideDown(500)
+                    }
+                }
+            }else if($(window).scrollTop()<4*web-200){
+                if(step!=3){
+                    step=3
+                    if(step==3&&intro==false){    //퍼블리셔
+                        start=false
+                        end=false
+                        $("#publisher .title").stop().animate({
+                            left:"5%"
+                        },500)
+                        $("#publisher .title span").stop()
+                        $("#publisher .title span").eq(9).delay(250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },1200)
+                        $("#publisher .title span").eq(8).delay(250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },1150)
+                        $("#publisher .title span").eq(7).delay(250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },1100)
+                        $("#publisher .title span").eq(6).delay(250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },1050)
+                        $("#publisher .title span").eq(5).delay(250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },1000)
+                        $("#publisher .title span").eq(4).delay(500).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },950)
+                        $("#publisher .title span").eq(3).delay(750).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },900)
+                        $("#publisher .title span").eq(2).delay(1000).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },850)
+                        $("#publisher .title span").eq(1).delay(1250).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },800)
+                        $("#publisher .title span").eq(0).delay(1500).stop().animate({
+                            left:"0%",
+                            opacity:1
+                        },750)
+                    }
+                }
+            }else if($(window).scrollTop()<5*web-200){
+                if(step!=4){
+                    step=4
+                    if(step==4&&intro==false){
+                        if(end==false){
+                            end==true
+                        }
+                        $("#guide img").css({
+                            display:"none"
+                        })
+                        if(guide_4==false){
+                            guide_4=true
+                            var bubble = setInterval(function(){
+                                $("#contact").append('<img class="bubble" src="./image/box/bubble.svg" alt="#">')
+                                $("#contact .bubble:last").css({
+                                    scale:(Math.random()*0.5)+0.5,
+                                    left:($("#card").offset().left)*((Math.random()*4)+1),
+                                    bottom:-($("#card").offset().top-4265)*(Math.random()+0.5)
+                                })
+                                $("#contact .bubble:last").animate({
+                                    bottom:"150%",
+                                    scale:".1"
+                                },3000,"linear",function(){
+                                    $(this).remove()
+                                })
+                            },50)
+                            var bubble_bg = setInterval(function(){
+                                $("#contact").append('<img class="bubble" src="./image/box/bubble.svg" alt="#">')
+                                $("#contact .bubble:last").css({
+                                    zIndex:0,
+                                    scale:Math.random()+0.25,
+                                    left:($("#card").offset().left)*((Math.random()*5)+1),
+                                    bottom:-($("#card").offset().top-4265)*(Math.random()*1.5+0.5)
+                                })
+                                $("#contact .bubble:last").animate({
+                                    bottom:"150%",
+                                    scale:".1"
+                                },4000,"linear",function(){
+                                    $(this).remove()
+                                })
+                            },150)
+                            $("#contact .main").css({
+                                left:"60%",
+                                top:"0"
+                            })
+                            $("#contact #card").css({
+                                opacity:1,
+                                top: "-75%",
+                                scale: .1,
+                                rotate: "0deg",
+                            })
+                            $("#contact #card").animate({
+                                top: "70%",
+                                scale: 0.8,
+                                rotate: "-50deg",
+                            },1000,"easeOutSine").animate({
+                                top: "59%",
+                                scale: 0.9,
+                                rotate: "10deg",
+                            },1000,"easeOutBack").animate({
+                                top:"50%",
+                                scale: 1,
+                                rotate: "0deg",
+                            },750,"easeInOutBack")
+                            $("#contact .main").animate({
+                                left: "-30%",
+                            },1000,"easeOutSine").animate({
+                                left: "5%",
+                                top:"10%"
+                            },1000,"easeOutCubic").animate({
+                                left:"0%",
+                                top:"0%"
+                            },500,"easeInQuart",function(){
+                                clearInterval(bubble)
+                                clearInterval(bubble_bg)
+                                $('#contact .text').animate({
+                                    opacity:1,
+                                    bottom:"15%"
+                                })
+                            })
+                        }
+                    }
+                }
+            }
+
+            if(step==0&&intro==false){    //타이틀
+                if(start==false){
+                    start=true
+                    logo_mobile_t()
+                    $("#main .logo").addClass("shadow")
+                    clearInterval(logo_c)
+                    logo_c = setInterval(logo_move,2000)
+                }
+                $("#top").stop().fadeOut()
+            }else{
+                logo_beacon_b()
+                $("#main .logo").removeClass("shadow")
+                clearInterval(logo_c)
+            }
+        }
+    }
+    $(window).on("touchmove",function(e){
+        mobileScroll()
+    })
+    
+    $("body").on("mousewheel", function(event,delta){
+        mobileScroll()
         if(mobile==false){
             var w_top = $("#cursor .c1").offset().top
             if(delta>0 && mobile==false){ //마우스힐을 올렸을때
@@ -1689,331 +2019,6 @@ $(function(){
                 $("#top").stop().fadeIn()
             }
         }
-
-        if(mobile==true&&m_open==false){
-            // console.log(step)
-            if($(window).scrollTop()<web-600){
-                if(step!=0){
-                    step=0
-                }
-            }else if($(window).scrollTop()<2*web-200){
-                if(step!=1){
-                    step=1
-                    if(step==1&&intro==false){    //소개
-                        start=false
-                        end=false
-                        if(guide_1==false){
-                            guide_1=true
-                            $("#guide img").attr("src", "image/box/hand2.svg")
-                            for(i=1;i<=10;i++){
-                                $("#guide img").stop()
-                                if(i==10){
-                                    $("#guide img").css({
-                                        scale:1
-                                    })
-                                }
-                            }
-                            var about_top=$("#about_me .main").offset().top
-                            var about_left=$("#about_me .main").offset().left
-                            var about=$("#about_me .main").width()
-                            $("#guide img").show(150).delay(1500).animate({
-                                scale:1,
-                                top: about_top+web-265,
-                                left: about_left+about/2+about/4
-                            },1000,"easeInOutSine").fadeOut(500)
-                        }
-                        logo_mobile_b()
-                        $("#about_me .title").stop().animate({
-                            left:"5%"
-                        },500)
-                        $("#about_me .title span").stop()
-                        $("#about_me .title span").eq(6).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },1050)
-                        $("#about_me .title span").eq(5).delay(250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },1000)
-                        $("#about_me .title span").eq(4).delay(500).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },950)
-                        $("#about_me .title span").eq(3).delay(750).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },900)
-                        $("#about_me .title span").eq(2).delay(1000).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },850)
-                        $("#about_me .title span").eq(1).delay(1250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },800)
-                        $("#about_me .title span").eq(0).delay(1500).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },750)
-                        $("#about_me .main .history").stop().stop().animate({
-                            bottom:"200px",
-                            scale: 1
-                        },500)
-                        $("#about_me .main .license").stop().stop().animate({
-                            bottom:"350px",
-                            scale: 1
-                        },1000)
-                        $("#about_me .main .skill").stop().stop().animate({
-                            bottom:"460px",
-                            scale: 1
-                        },1500)
-                        $("#about_me .photo img").stop().animate({
-                            left:"-45%"
-                        },750)
-                    }
-                }
-            }else if($(window).scrollTop()<3*web-200){
-                if(step!=2){
-                    step=2
-                    if(step==2&&intro==false){    //디자인
-                        start=false
-                        end=false
-                        if(guide_2==false){
-                            guide_2=true
-                            $("#guide img").attr("src", "image/box/hand2.svg")
-                            for(i=1;i<=10;i++){
-                                $("#guide img").stop()
-                                if(i==10){
-                                    $("#guide img").css({
-                                        scale:1
-                                    })
-                                }
-                            }
-                            var design_top=$("#design").offset().top+web/2
-                            var design=$("#design .main").width()
-                            var design_left=$("#design .main").offset().left+design*0.4
-                            $("#guide img").fadeOut(500).show(50).show(50).show(50).delay(1500).animate({
-                                scale:1,
-                                top: design_top,
-                                left: design_left
-                            },1000,"easeInOutSine").animate({
-                                scale:1
-                            },200).animate({
-                                scale:.1,
-                                top: design_top-5,
-                                left: design_left-5
-                            },100).animate({
-                                scale:1,
-                                top: design_top,
-                                left: design_left
-                            },350).animate({
-                                scale:.1,
-                                top: design_top-5,
-                                left: design_left-5
-                            },100).animate({
-                                scale:1,
-                                top: design_top,
-                                left: design_left
-                            },350).fadeOut(500)
-                        }
-                        $("#design .title").stop().animate({
-                            left:"5%"
-                        },500)
-                        $("#design .title span").stop()
-                        $("#design .title span").eq(5).delay(250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },1000)
-                        $("#design .title span").eq(4).delay(500).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },950)
-                        $("#design .title span").eq(3).delay(750).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },900)
-                        $("#design .title span").eq(2).delay(1000).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },850)
-                        $("#design .title span").eq(1).delay(1250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },800)
-                        $("#design .title span").eq(0).delay(1500).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },750)
-                        $("#design .main .card").stop().animate({
-                            left:0,
-                            scale:1
-                        },1250)
-                        $("#design .main .card .info").stop().animate({
-                            right:"-55%"
-                        },1500)
-                        $("#design .main .card .info text").stop()
-                        $("#design .main .card .info .stroke").stop().delay(1000).animate({
-                            strokeDashoffset: 0
-                        },3000)
-                        $("#design .main .card .info .fill").stop().delay(1500).animate({
-                            opacity: 1
-                        },2500)
-                        $("#design .main .card .info .text").stop().delay(1500).slideDown(500)
-                    }
-                }
-            }else if($(window).scrollTop()<4*web-200){
-                if(step!=3){
-                    step=3
-                    if(step==3&&intro==false){    //퍼블리셔
-                        start=false
-                        end=false
-                        $("#publisher .title").stop().animate({
-                            left:"5%"
-                        },500)
-                        $("#publisher .title span").stop()
-                        $("#publisher .title span").eq(9).delay(250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },1200)
-                        $("#publisher .title span").eq(8).delay(250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },1150)
-                        $("#publisher .title span").eq(7).delay(250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },1100)
-                        $("#publisher .title span").eq(6).delay(250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },1050)
-                        $("#publisher .title span").eq(5).delay(250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },1000)
-                        $("#publisher .title span").eq(4).delay(500).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },950)
-                        $("#publisher .title span").eq(3).delay(750).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },900)
-                        $("#publisher .title span").eq(2).delay(1000).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },850)
-                        $("#publisher .title span").eq(1).delay(1250).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },800)
-                        $("#publisher .title span").eq(0).delay(1500).stop().animate({
-                            left:"0%",
-                            opacity:1
-                        },750)
-                    }
-                }
-            }else if($(window).scrollTop()<5*web-200){
-                if(step!=4){
-                    step=4
-                    if(step==4&&intro==false){
-                        if(end==false){
-                            end==true
-                        }
-                        $("#guide img").css({
-                            display:"none"
-                        })
-                        if(guide_4==false){
-                            guide_4=true
-                            var bubble = setInterval(function(){
-                                $("#contact").append('<img class="bubble" src="./image/box/bubble.svg" alt="#">')
-                                $("#contact .bubble:last").css({
-                                    scale:(Math.random()*0.5)+0.5,
-                                    left:($("#card").offset().left)*((Math.random()*4)+1),
-                                    bottom:-($("#card").offset().top-4265)*(Math.random()+0.5)
-                                })
-                                $("#contact .bubble:last").animate({
-                                    bottom:"150%",
-                                    scale:".1"
-                                },3000,"linear",function(){
-                                    $(this).remove()
-                                })
-                            },50)
-                            var bubble_bg = setInterval(function(){
-                                $("#contact").append('<img class="bubble" src="./image/box/bubble.svg" alt="#">')
-                                $("#contact .bubble:last").css({
-                                    zIndex:0,
-                                    scale:Math.random()+0.25,
-                                    left:($("#card").offset().left)*((Math.random()*5)+1),
-                                    bottom:-($("#card").offset().top-4265)*(Math.random()*1.5+0.5)
-                                })
-                                $("#contact .bubble:last").animate({
-                                    bottom:"150%",
-                                    scale:".1"
-                                },4000,"linear",function(){
-                                    $(this).remove()
-                                })
-                            },150)
-                            $("#contact .main").css({
-                                left:"60%",
-                                top:"0"
-                            })
-                            $("#contact #card").css({
-                                opacity:1,
-                                top: "-75%",
-                                scale: .1,
-                                rotate: "0deg",
-                            })
-                            $("#contact #card").animate({
-                                top: "70%",
-                                scale: 0.8,
-                                rotate: "-50deg",
-                            },1000,"easeOutSine").animate({
-                                top: "59%",
-                                scale: 0.9,
-                                rotate: "10deg",
-                            },1000,"easeOutBack").animate({
-                                top:"50%",
-                                scale: 1,
-                                rotate: "0deg",
-                            },750,"easeInOutBack")
-                            $("#contact .main").animate({
-                                left: "-30%",
-                            },1000,"easeOutSine").animate({
-                                left: "5%",
-                                top:"10%"
-                            },1000,"easeOutCubic").animate({
-                                left:"0%",
-                                top:"0%"
-                            },500,"easeInQuart",function(){
-                                clearInterval(bubble)
-                                clearInterval(bubble_bg)
-                                $('#contact .text').animate({
-                                    opacity:1,
-                                    bottom:"15%"
-                                })
-                            })
-                        }
-                    }
-                }
-            }
-
-            if(step==0&&intro==false){    //타이틀
-                if(start==false){
-                    start=true
-                    logo_mobile_t()
-                    $("#main .logo").addClass("shadow")
-                    clearInterval(logo_c)
-                    logo_c = setInterval(logo_move,2000)
-                }
-                $("#top").stop().fadeOut()
-            }else{
-                logo_beacon_b()
-                $("#main .logo").removeClass("shadow")
-                clearInterval(logo_c)
-            }
-        }
-
         if(guide_1==true&&step!=1){
             $("#guide img").css({
                 display:"none"
@@ -2034,13 +2039,6 @@ $(function(){
                 display:"none"
             })
         }
-    }
-    $(window).on("touchmove",function(e,delta){
-        mobileScroll()
-    })
-    
-    $("body").on("mousewheel", function(event,delta){
-        mobileScroll()
     })
     
 
